@@ -1,0 +1,74 @@
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ nombre_negocio }} - Nuestros Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .producto-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .producto-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 280px;
+        }
+        .producto-card h2 {
+            color: #333;
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        .producto-card p {
+            margin: 5px 0;
+        }
+        .precio {
+            font-weight: bold;
+            color: #28a745;
+            font-size: 1.2em;
+        }
+        .disponible {
+            color: green;
+        }
+        .no-disponible {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a {{ nombre_negocio }}</h1>
+    <h2>Nuestros Productos Destacados DE Jesus Campoya</h2>
+
+    <div class="producto-lista">
+        {% for producto in productos %}
+            <div class="producto-card">
+                <h2>{{ producto.nombre }}</h2>
+                <p class="precio">Precio: ${{ producto.precio }}</p>
+                <p>Disponibilidad: 
+                    {% if producto.disponible %}
+                        <span class="disponible">En stock</span>
+                    {% else %}
+                        <span class="no-disponible">Agotado</span>
+                    {% endif %}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <p>¡Gracias por visitar nuestra tienda!</p>
+</body>
+</html>
